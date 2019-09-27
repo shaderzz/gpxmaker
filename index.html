@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <title>GPXmaker - Samsung Health json to GPX converter</title>
+
+        <script type="text/javascript" src="gpxmaker.js"></script>
+        <link href="style.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <div id="gpxmaker">
+            <h1>GPXmaker</h1>
+            <h2>Samsung Health json to GPX converter</h2>
+            <p>This script allows you to convert json data from Samsung Health (originally S Health) to GPX file for Strava in pure Javascript</p>
+            <p>For more details <a href="https://github.com/shaderzz/gpxmaker" target="_blank">Click here</a></p>
+
+            <div id="result"></div>
+
+            <label for="files" class="button file-upload">
+                <div id="upload-icon">
+                    <span class="cloud1">☁</span>
+                    <span class="cloud2">☁</span>
+                    <i>⇧</i> 
+                </div>
+                Select *.json files
+
+            </label>
+            <input type="file" id="files" name="files[]" multiple />
+            <output id="list"></output>
+
+            <script>
+                document.getElementById('files').addEventListener('change', handleFileSelect, false);
+            </script>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,61 @@
+#gpxmaker{
+    margin: 20px auto;
+}
+
+.button {
+    background: #3498db;
+    background-image: linear-gradient(to bottom, #3498db, #2980b9);
+    border-radius: 8px;
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 12px;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+}
+
+.button:hover {
+    background: #3cb0fd;
+    background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+    text-decoration: none;
+}
+
+#upload-icon{
+    display: inline-block;
+    width: 20px;
+}
+
+#upload-icon span{
+    position: absolute;
+    font-size: 18px;
+}
+
+#upload-icon .cloud1{
+    margin-top: -20px;
+}
+#upload-icon .cloud2{
+    margin-top: -8px;
+    transform: rotate(180deg);
+}
+
+.file-upload{
+    /* inheritance from .button */
+    cursor: pointer;
+    display: inline-block;
+}
+
+.file-upload i{
+    font-style: normal;
+    position: absolute;
+    margin-top: -9px;
+    margin-left: 3px;
+    color: #3cb0fd;
+    font-weight: bold;
+}
+
+#files, input[type="file"] {
+    display: none;
+}
+a{
+    color: #3cb0fd;
+    text-decoration: none;
+}
