@@ -30,10 +30,13 @@ BTW, I was inspired by [this blog post](https://www.dcrainmaker.com/2019/03/expo
 For example: 
 
 >27a44eb3-6fc6-4994-bcd1-eccd80074502.live_data.json
+
 >27a44eb3-6fc6-4994-bcd1-eccd80074502.location_data.json
 
 where "27a44eb3-6fc6-4994-bcd1-eccd80074502" is the workout identifier.
+
 live_data contains Live data (e.g. heart rate, speed, power, and so on) during exercise
+
 location_data - Location (trajectory) data during exercise
 
 For the correct preparation of the GPX, we need both of these files. 
@@ -42,7 +45,7 @@ For the correct preparation of the GPX, we need both of these files.
 
 * To import a file, log into the Strava website, then hover the mouse cursor over the plus icon in the top right-hand corner. Select Upload activity, and then switch to the File tab to pick a file from your computer. All of the data it contains will then upload to your Strava account.
 
-The script does not save your data anywhere except your computer, it processes data in real time using JS and gives the resulted file or reports an error. If you have any difficulties or suggestions how to expand the functionality - write to me on Twitter @ishaderzz
+The script does not save your data anywhere except your computer, it processes data in real time using JS and gives the resulted file or reports an error. If you have any difficulties or suggestions how to expand the functionality - write to me on Twitter [@ishaderzz](https://twitter.com/ishaderzz)
 
 Want to contribute? Great!
 
