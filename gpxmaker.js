@@ -27,7 +27,13 @@ const isoData = (d) => (new Date(d)).toISOString();
 
 const handleFileSelect = (evt) => {
     const files = evt.target.files; // FileList object
+	const bulk = document.getElementById('separate').checked
     const cnt = files.length;
+	
+	if (bulk && (cnt % 2 == 1)) {
+		document.getElementById('result').innerHTML = 'For bulk, you need to upload files in multiples of 2';
+        return;
+	}
 
     // files is a FileList of File objects. List some properties.
     const output = [];
@@ -38,7 +44,7 @@ const handleFileSelect = (evt) => {
         return;
     }
 
-    const finalize = (data) => {
+    const finalize = (data, idx) => {
         //console.log('final data:', data);
         let gpx = `<?xml version="1.0" encoding="UTF-8"?>
 <gpx creator="StravaGPX" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd http://www.garmin.com/xmlschemas/GpxExtensions/v3 http://www.garmin.com/xmlschemas/GpxExtensionsv3.xsd http://www.garmin.com/xmlschemas/TrackPointExtension/v1 http://www.garmin.com/xmlschemas/TrackPointExtensionv1.xsd" version="1.1" xmlns="http://www.topografix.com/GPX/1/1" xmlns:gpxtpx="http://www.garmin.com/xmlschemas/TrackPointExtension/v1" xmlns:gpxx="http://www.garmin.com/xmlschemas/GpxExtensions/v3">
@@ -46,10 +52,9 @@ const handleFileSelect = (evt) => {
         <time>${isoData(Object.keys(data)[0] * 1000)}</time>
     </metadata>
     <trk>
-        <name>My New Ride</name>
+        <name>Run</name>
         <type>1</type>
         <trkseg>`;
-
         Object.values(data).reduce(function(previousValue, currentValue, index, array){
             //console.log('index', index, 'currentValue', currentValue);
             if(currentValue.latitude && currentValue.longitude){
@@ -78,8 +83,13 @@ const handleFileSelect = (evt) => {
         </trkseg>
     </trk>
 </gpx>`;
+		if (bulk) {
+			save('workout_' + ((idx+1)/2).toString() + '.gpx', gpx);
+		}
+		else {
+			save('workout.gpx', gpx);
+		}
 
-        save('workout.gpx', gpx);
     }
 
     Object.keys(files).map((key, idx) => {
@@ -106,9 +116,19 @@ const handleFileSelect = (evt) => {
 
             Object.assign(merged, formatted_result);
 
-            if(cnt === idx + 1){
-                finalize(merged);
-            }
+			if (bulk){
+				if((cnt === idx + 1) || (idx % 2 == 1)){
+					finalize(merged, idx);
+					merged = {};
+				}
+			}
+			else {
+				if(cnt === idx + 1){
+					finalize(merged, idx);
+				}
+			}
+
+
         }
         fr.readAsText(f);
 
