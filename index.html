@@ -1,7 +1,7 @@
 <html>
     <head>
         <title>GPXmaker - Samsung Health json to GPX converter</title>
-
+		<meta charset="UTF-8">
         <script type="text/javascript" src="gpxmaker.js"></script>
         <link href="style.css" rel="stylesheet" type="text/css"/>
     </head>
@@ -11,7 +11,8 @@
             <h2>Samsung Health json to GPX converter</h2>
             <p>This script allows you to convert json data from Samsung Health (originally S Health) to GPX file for Strava in pure Javascript</p>
             <p>For more details <a href="https://github.com/shaderzz/gpxmaker" target="_blank">Click here</a></p>
-
+			<input type="checkbox" id="separate" name="separate">
+			<label for="separate">Create separate .gpx files for each workout (sort files alphabetically and disable browser download confirmation)</label><br><br>
             <div id="result"></div>
 
             <label for="files" class="button file-upload">
